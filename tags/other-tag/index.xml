@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Non-featured Post</title>
+      <link>https://calebdinsmore.com/post/non-featured/</link>
+      <pubDate>Fri, 11 Jul 2014 10:54:24 +0200</pubDate>
+      
+      <guid>https://calebdinsmore.com/post/non-featured/</guid>
+      <description> This is a non-featured post Non-featured!
+ This is a list Second on the list Third!  </description>
+    </item>
+    
+    <item>
       <title>Trying out my first post</title>
       <link>https://calebdinsmore.com/post/trying-out/</link>
       <pubDate>Fri, 11 Jul 2014 10:54:24 +0200</pubDate>
