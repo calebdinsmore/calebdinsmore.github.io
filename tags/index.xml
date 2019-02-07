@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Caleb Dinsmore</title>
-    <link>http://example.org/tags/</link>
+    <link>https://calebdinsmore.com/tags/</link>
     <description>Recent content in Tags on Caleb Dinsmore</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 11 Jul 2014 10:54:24 +0200</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://calebdinsmore.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Other Tag</title>
-      <link>http://example.org/tags/other-tag/</link>
+      <link>https://calebdinsmore.com/tags/other-tag/</link>
       <pubDate>Fri, 11 Jul 2014 10:54:24 +0200</pubDate>
       
-      <guid>http://example.org/tags/other-tag/</guid>
+      <guid>https://calebdinsmore.com/tags/other-tag/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Test</title>
-      <link>http://example.org/tags/test/</link>
+      <link>https://calebdinsmore.com/tags/test/</link>
       <pubDate>Fri, 11 Jul 2014 10:54:24 +0200</pubDate>
       
-      <guid>http://example.org/tags/test/</guid>
+      <guid>https://calebdinsmore.com/tags/test/</guid>
       <description></description>
     </item>
     

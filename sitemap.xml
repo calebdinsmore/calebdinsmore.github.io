@@ -3,41 +3,41 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/post/trying-out/</loc>
+    <loc>https://calebdinsmore.com/post/trying-out/</loc>
     <lastmod>2014-07-11T10:54:24+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.org/tags/other-tag/</loc>
+    <loc>https://calebdinsmore.com/</loc>
     <lastmod>2014-07-11T10:54:24+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/post/</loc>
+    <loc>https://calebdinsmore.com/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/tags/other-tag/</loc>
     <lastmod>2014-07-11T10:54:24+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://calebdinsmore.com/post/</loc>
     <lastmod>2014-07-11T10:54:24+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/test/</loc>
+    <loc>https://calebdinsmore.com/tags/</loc>
+    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/tags/test/</loc>
     <lastmod>2014-07-11T10:54:24+02:00</lastmod>
     <priority>0</priority>
   </url>
