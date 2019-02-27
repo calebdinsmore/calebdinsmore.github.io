@@ -3,18 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://calebdinsmore.com/post/non-featured/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <loc>https://calebdinsmore.com/page/github/</loc>
+    <lastmod>2017-11-01T13:17:56+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://calebdinsmore.com/post/trying-out/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <loc>https://calebdinsmore.com/quote/edward-snowden-privacy/</loc>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/author/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://calebdinsmore.com/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <lastmod>2017-11-01T13:17:56+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -24,26 +29,44 @@
   </url>
   
   <url>
-    <loc>https://calebdinsmore.com/tags/other-tag/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <loc>https://calebdinsmore.com/author/edward-snowden/</loc>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://calebdinsmore.com/post/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <loc>https://calebdinsmore.com/tags/free-speech/</loc>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/page/</loc>
+    <lastmod>2017-11-01T13:17:56+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/categories/privacy/</loc>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/quote/</loc>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://calebdinsmore.com/categories/society/</loc>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://calebdinsmore.com/tags/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://calebdinsmore.com/tags/test/</loc>
-    <lastmod>2014-07-11T10:54:24+02:00</lastmod>
+    <lastmod>2017-11-01T13:01:14+01:00</lastmod>
     <priority>0</priority>
   </url>
   
