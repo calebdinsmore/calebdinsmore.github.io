@@ -7,14 +7,14 @@
         <meta name="description" content="Programming blog about security, Python, .NET, AngularJS, and more.">
         <meta name="keywords" content="blog,personal,programming,python,software engineer,aws,security,dotnet">
         <meta name="generator" content="Hugo 0.54.0" />
-        <title> Github | Caleb Dinsmore</title>
-        <meta name="description" content="Github - Programming blog about security, Python, .NET, AngularJS, and more.">
-        <meta itemprop="name" content="Github">
-        <meta itemprop="description" content="Github - Programming blog about security, Python, .NET, AngularJS, and more.">
-        <meta property="og:title" content="Github">
-        <meta property="og:description" content="Github - Programming blog about security, Python, .NET, AngularJS, and more.">
+        <title> De-identifying (Anonymizing) Data for Development | Caleb Dinsmore</title>
+        <meta name="description" content="De-identifying (Anonymizing) Data for Development - Programming blog about security, Python, .NET, AngularJS, and more.">
+        <meta itemprop="name" content="De-identifying (Anonymizing) Data for Development">
+        <meta itemprop="description" content="De-identifying (Anonymizing) Data for Development - Programming blog about security, Python, .NET, AngularJS, and more.">
+        <meta property="og:title" content="De-identifying (Anonymizing) Data for Development">
+        <meta property="og:description" content="De-identifying (Anonymizing) Data for Development - Programming blog about security, Python, .NET, AngularJS, and more.">
         <meta property="og:image" content="https://www.gravatar.com/avatar/76bfd1fb0a1c0eae14cc7b9cf0ee840e?size=200">
-        <meta property="og:url" content="https://calebdinsmore.com/page/github/">
+        <meta property="og:url" content="https://calebdinsmore.com/article/anonymizing-data/">
         <meta property="og:site_name" content="Caleb Dinsmore">
         <meta property="og:type" content="article">
         <link rel="icon" type="image/png" href="https://calebdinsmore.com/favicon-32x32.png" sizes="32x32">
@@ -91,43 +91,174 @@
      
     <div class="article-wrapper u-cf single">
         
-            <a class="bubble" href="/page/github/">
-    <i class="fa fa-fw fa-file"></i>
+            <a class="bubble" href="/article/anonymizing-data/">
+    <i class="fa fa-fw fa-pencil"></i>
 </a>
 
 <article class="default article">
     
 
     <div class="content">
-    <h3><a href="/page/github/">Github</a></h3>
+    <h3><a href="/article/anonymizing-data/">De-identifying (Anonymizing) Data for Development</a></h3>
     <div class="meta">
         
             
-                <span class="date moment">2017-11-01</span>
+                <span class="date moment">2019-02-26</span>
             
         
 
         
 
         
+            <span class="categories">
+                
+                    <a href="/categories/security">Security</a>
+                
+            </span>
+        
 
+        
+            <span class="author"><a href="/author/caleb-dinsmore">Caleb Dinsmore</a></span>
         
     </div>
 
     
-        
+        <p>When working with Personally Identifying Information (PII) or Protected Health Information (PHI), it&rsquo;s often necessary to &ldquo;de-identify&rdquo; that information, particularly if you are displaying it in any way (for reporting or displaying research results). You want to ensure that the data you&rsquo;re showing can&rsquo;t be used to identify a single individual.</p>
+
+<h2 id="background">Background</h2>
+
+<p>To give some background on me/the issue at hand, I work for a company called <a href="https://edusource.us">EduSource</a>, which has partnered with another company called Translating Data (info on that partnership <a href="https://edusource.us/edusource-announces-partnership-with-translating-data/">here</a>). A brief summary of what we do with Translating Data is that we help businesses and small community-based organizations make sense of their data and help them make business decisions based on our analysis.</p>
+
+<h2 id="my-problem">My Problem</h2>
+
+<p>Because of the work we do, we encounter quite a bit of PII and PHI. Even though we weren&rsquo;t publishing anything publicly, I still wanted to de-identify any data we had, as that was being used by myself and other developers to develop our ELT pipelines. We wanted as few eyes as possible to be able to see that data in its pure form, PII/PHI and all. This follows the security principle of <em>least privilege</em>, that dictates that any given process or user should have only as much privilege as they need to perform their intended function or work. Since our developers don&rsquo;t <em>need</em> the data in its raw form in order to develop our pipelines, we didn&rsquo;t want to allow them to.</p>
+
+<p>In my particular case, the data we were receiving came in the form of .DBF files, which were converted into CSVs via an intermediary process. The CSVs were what I needed to de-identify, as those were what would be handled by the developers.</p>
+
+<h2 id="my-solution">My Solution</h2>
+
+<h3 id="faker">Faker</h3>
+
+<p>Being an avid Python lover, I gravitated toward a Python solution. I quickly found a really great library called <a href="https://github.com/joke2k/faker/">Faker</a>. This library came stocked with loads of providers that generated random fake data (names, addresses, dates, etc.). This gave me an idea.</p>
+
+<h4 id="my-method">My Method</h4>
+
+<p><img src="./my_method.png" alt="" /></p>
+
+<p>This diagram outlines the general way my solution would work. For every field in every row of the data, do the following:</p>
+
+<ol>
+<li>Combine it with some secret key.</li>
+<li>Input the combined value into a hashing function.</li>
+<li>Take the result and use it to seed Faker&rsquo;s random generator.</li>
+<li>Generate a fake result.</li>
+</ol>
+
+<p>This would accomplish a few things:</p>
+
+<ul>
+<li>It would enable us to be able to control Faker&rsquo;s output, and</li>
+<li>it would help maintain referential integrity.</li>
+</ul>
+
+<p>The latter point is the more important, in my view. If we just let Faker loose on the data, using whatever it seeded the generator with by default, we would lose referential integrity. The value 12345 might get changed to 54321 in File A, but in File B it might get changed to 98654&ndash;we&rsquo;d have no way of knowing. With the method outlined above, a value in one file is changed to exactly the same value as any other occurrence of the value, within the same file and in other files.</p>
+
+<hr />
+
+<h2 id="data-anonymizer">Data-Anonymizer</h2>
+
+<p>The command-line tool I created to solve this problem I dubbed <a href="https://github.com/calebdinsmore/data-anonymizer">data-anonymizer</a>.</p>
+
+<p>The way it works is fairly simple. It accepts a YAML configuration, a key file, and the CSV file you wish to de-identify/anonymize. The YAML configuration tells the tool about the structure of the data and how each field should be changed.</p>
+
+<h4 id="example">Example</h4>
+
+<p>Say you had a CSV with this data:</p>
+
+<table>
+<thead>
+<tr>
+<th>first_name</th>
+<th>last_name</th>
+<th>ssn</th>
+<th>dob</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Jeffrey</td>
+<td>Smith</td>
+<td>123-45-6789</td>
+<td>1990/01/23</td>
+</tr>
+
+<tr>
+<td>James</td>
+<td>Cilantro</td>
+<td>098-76-5432</td>
+<td>1978/04/24</td>
+</tr>
+</tbody>
+</table>
+
+<p>A configuration file for a CSV like that could be:</p>
+
+<pre><code class="language-yaml">delimiter: ','
+columns_to_anonymize:
+  first_name:
+    type: first_name
+  last_name:
+    type: last_name
+  ssn:
+    type: custom
+    format: ###-##-####
+  dob:
+    type: datetime
+    format: %Y/%m/%d
+    preserve_year: true
+    safe_harbor: true
+</code></pre>
+
+<p>Pretty readable, I think. Each key under <code>columns_to_anonymize</code> corresponds to the CSV header above each column (if the data doesn&rsquo;t have headers, indices work as well). Each of the <code>type</code>s corresponds to a field type that the tool is capable of handling. The <code>custom</code> field type is a special catch-all that takes in a format and generates data based on that format. Regarding the above example, <code>#</code> symbols are replaced with randomly generated numbers between 0 and 9, so a possible generated value for <code>ssn</code> could be 504-37-6487.</p>
+
+<p>Regarding <code>dob</code>, the <code>preserve_year</code> configuration tells the tool to only randomize the month and day of the value, while preserving the year in the original data. The <code>safe_harbor</code> flag refers to the &ldquo;Safe Harbor&rdquo; method of de-identifying data, outlined by HIPAA. Specifically, this flag refers to this clause:</p>
+
+<blockquote>
+<p>The following identifiers of the individual or of relatives, employers, or household members of the individual, are removed:
+&hellip;
+All elements of dates (except year) for dates that are directly related to an individual, including birth date, admission date, discharge date, death date, and all ages over 89 and all elements of dates (including year) indicative of such age, except that such ages and elements may be aggregated into a single category of age 90 or older</p>
+</blockquote>
+
+<p>The <code>safe_harbor</code> flag tells the tool that if the date is 90 years in the past or more, set the year of the result to 150 years ago. This way, any data referring to an individual of 90 years or older is aggregated into a single group of 150 year-old records.</p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Even when you&rsquo;re not showing sensitive data publicly in any way, it&rsquo;s still important to keep in mind the principle of least privilege, restricting users/developers from being able to see or do anything beyond what is strictly necessary.</p>
+
+<p>Also, let me know if you find my tool useful!</p>
     
 </div>
 
+    
+<div class="footer">
+
 
     
-        <script>window.location = "https://github.com/calebdinsmore"</script>
-    
-
-    
-<div class="footer no-tags">
-
-
+        <div class="tags">
+            <i class="fa fa-tags"></i>
+            <div class="links">
+                
+                    <a href="/tags/python">Python</a>
+                
+                    <a href="/tags/big-data">Big Data</a>
+                
+                    <a href="/tags/privacy">Privacy</a>
+                
+            </div>
+        </div>
     
 
     
