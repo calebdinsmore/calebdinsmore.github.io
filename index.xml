@@ -11,12 +11,12 @@
     
     
     <item>
-      <title>De-identifying (Anonymizing) Data for Development</title>
+      <title>De-identifying (Anonymizing) Data for Development (using Python)</title>
       <link>https://calebdinsmore.com/article/anonymizing-data/</link>
       <pubDate>Tue, 26 Feb 2019 21:02:17 -0500</pubDate>
       
       <guid>https://calebdinsmore.com/article/anonymizing-data/</guid>
-      <description>&lt;p&gt;When working with Personally Identifying Information (PII) or Protected Health Information (PHI), it&amp;rsquo;s often necessary to &amp;ldquo;de-identify&amp;rdquo; that information, particularly if you are displaying it in any way (for reporting or displaying research results). You want to ensure that the data you&amp;rsquo;re showing can&amp;rsquo;t be used to identify a single individual.&lt;/p&gt;</description>
+      <description>&lt;p&gt;When working with Personally Identifying Information (PII) or Protected Health Information (PHI), it&amp;rsquo;s often necessary to &amp;ldquo;de-identify&amp;rdquo; that information, particularly if you are displaying it in any way (for reporting or displaying research results). You want to ensure that the data you&amp;rsquo;re showing can&amp;rsquo;t be used to identify any given individual. In my case, I wanted to also de-identify the data being used within my organization, even though that data wouldn&amp;rsquo;t be displayed publicly.&lt;/p&gt;</description>
     </item>
     
     <item>
